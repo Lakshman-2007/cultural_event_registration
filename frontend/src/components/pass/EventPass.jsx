@@ -97,7 +97,6 @@ export const EventPass = ({ participant }) => {
         ref={passRef}
         id="event-pass-card"
         className="w-full bg-slate-950 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl relative"
-        style={{ contentVisibility: "auto" }}
       >
         {/* Ticket Header Brand */}
         <div className="relative p-6 text-center border-b border-dashed border-slate-800/80 pb-6">

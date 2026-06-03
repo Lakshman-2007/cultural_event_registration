@@ -22,7 +22,9 @@ def generate_qr_code(data: str) -> str:
         box_size=10,
         border=4,
     )
-    qr.add_data(data)
+    # Encode full URL so scanning with a regular phone camera works
+    base_url = "http://localhost:5173/pass"
+    qr.add_data(f"{base_url}/{data}")
     qr.make(fit=True)
 
     # Generate image
