@@ -206,9 +206,15 @@ export const AdminDashboardPage = () => {
           scanner.clear().catch((e) => console.warn(e));
           setScannerActive(false);
           
+          let regId = decodedText.trim();
+          // Extract ID if the QR code is a full URL (e.g., http://localhost:5173/pass/CUL2026-0001)
+          if (regId.includes('/pass/')) {
+            regId = regId.split('/pass/')[1].split('/')[0];
+          }
+          
           const toastId = toast.loading("Fetching scan status...");
           try {
-            const response = await scanQR(decodedText.trim());
+            const response = await scanQR(regId);
             setScanResult(response);
             setScanModalOpen(true);
             toast.dismiss(toastId);
